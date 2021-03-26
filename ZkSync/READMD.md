@@ -92,40 +92,40 @@ zk run loadtest
 
 每个目录介绍看文档。
 
-bin - 启动脚本
-contracts - L1智能合约逻辑
-core - L2的核心逻辑
-docker - docker相关的配置
-docs - 文档，比较详细的解释了zkSync的协议设计，电路实现，智能合约，K8如何配置，以及如何启动等等。
-etc - 配置信息
-infrastructure - 一些辅助工具。
-sdk - 多语言客户端库
+- bin - 启动脚本
+- contracts - L1智能合约逻辑
+- core - L2的核心逻辑
+- docker - docker相关的配置
+- docs - 文档，比较详细的解释了zkSync的协议设计，电路实现，智能合约，K8如何配置，以及如何启动等等。
+- etc - 配置信息
+- infrastructure - 一些辅助工具。
+- sdk - 多语言客户端库
 
 
 ### Core代码分析
 
-bin/server - 服务总入口，运行监控数据、核心任务、API服务、以太坊发送服务、证明生成服务、
-bin/prover - 零知识证明的证明生成引擎
+- bin/server - 服务总入口，运行监控数据、核心任务、API服务、以太坊发送服务、证明生成服务.  
+- bin/prover - 零知识证明的证明生成引擎
 
-bin/data_restore - 状态恢复的相关逻辑
-bin/key_generator - eth客户端的封装
-bin/parse_pub_data - 解析Pubdata数据。
-bin/zksync_* - ZkSync微服务
+- bin/data_restore - 状态恢复的相关逻辑
+- bin/key_generator - eth客户端的封装
+- bin/parse_pub_data - 解析Pubdata数据。
+- bin/zksync_* - ZkSync微服务
 
-@lib/circuit - 零知识证明电路实现
-@lib/crypto - 零知识证明底层库封装
-@lib/storage - 所有状态的存储以及持久化逻辑
-lib/api_client - Rest接口封装
-lib/basic_types - 对基础类型封装，与web3类型统一
-lib/config - ZkSync配置信息 envy库
-lib/contracts - 使用ethabi对于合约实例化
-lib/eth_client - 对ETH接口封装，支持测试，直接模式，多播模式
-lib/eth_signer - ETH签名抽象，支持客户端签名和私钥签名
-lib/prometheus_exporter - 数据统计服务
-lib/prover_utils -  证明系统的辅助工具
-@lib/state - ZkSync的状态系统
-@lib/types - ZkSync中必要的类型，交易，操作
-test/loadtest - 压力测试相关逻辑
+- @lib/circuit - 零知识证明电路实现
+- @lib/crypto - 零知识证明底层库封装
+- @lib/storage - 所有状态的存储以及持久化逻辑
+- lib/api_client - Rest接口封装
+- lib/basic_types - 对基础类型封装，与web3类型统一
+- lib/config - ZkSync配置信息 envy库
+- lib/contracts - 使用ethabi对于合约实例化
+- lib/eth_client - 对ETH接口封装，支持测试，直接模式，多播模式
+- lib/eth_signer - ETH签名抽象，支持客户端签名和私钥签名
+- lib/prometheus_exporter - 数据统计服务
+- lib/prover_utils -  证明系统的辅助工具
+- @lib/state - ZkSync的状态系统
+- @lib/types - ZkSync中必要的类型，交易，操作
+- test/loadtest - 压力测试相关逻辑
 ....等
 
 #### 数据类型
@@ -172,6 +172,7 @@ TODO
 交易是在L1上发起的。
 
 在ethescan区块链浏览器上可找到交易内容。
+
 ![input](./img/input_data.png)
 
 #### 接着激活账户:
@@ -198,12 +199,14 @@ Metamask签名提示
 交易是在L2上发起的，如果L2服务挂了，那要如何处理？
 
 ![withdraw](./img/withdraw.png)
+
 成功界面。
 赎回费用要0.00788。手续费要0.000286。
 
 ### 外部转账与内部转账的手续费差异。
 
 ![eth_transfer](./img/eth_transfer.png)
+
 **手续费0.00231**
 
 ![l2_transfer](./img/l2_transfer.png)
