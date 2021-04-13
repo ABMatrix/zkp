@@ -1,18 +1,23 @@
 ## 编译环境安装配置
-下载[链接](https://github.com/matter-labs/zinc/releases/download/0.2.3/zinc-0.2.3-linux.tar.gz)
-解压
-`
-tar -xzvf zinc-0.2.3-linux.tar.gz
-`
-将路径添加到环境变量中
-`
-vim ~/.bashrc
-`
-添加路径："export PATH=(文件路径)/zinc-0.2.3-linux:$PATH"到.bashrc最后一行。
-source环境
-`
-source ~/.bashrc
-`
+* 下载[链接](https://github.com/matter-labs/zinc/releases/download/0.2.3/zinc-0.2.3-linux.tar.gz)
+* 解压
+`tar -xzvf zinc-0.2.3-linux.tar.gz`
+* 将路径添加到环境变量中
+`vim ~/.bashrc`
+* 添加路径："export PATH=(文件路径)/zinc-0.2.3-linux:$PATH"到.bashrc最后一行。
+* source环境
+`source ~/.bashrc`
+
+## zargo
+* zargo类似于cargo，是zinc的编译工具，包含各种编译，上传，下载功能。注意，几乎所有的上传，下载等都需要指明特定网络。
+
+* 这里特别吐槽一下目前的依赖功能。
+
+    * 第一，dependencies中只能写已经上传到特定网络(如rinkeby)的库。
+    * 第二，如果创建的是library，那么无法依赖contract。
+    * 第三，如果要知道有那些合约可以依赖，需要自行下载查看且不区分library和contract，如：
+    `zargo download --network rinkeby --list > dependencies.txt`
+    * 第四，没有一个好的浏览工具查看各种可依赖库，没有document系统来查阅可用函数等。
 
 ## 文档链接
 [语法文档](https://zinc.zksync.io/index.html)
@@ -92,9 +97,7 @@ balances：address->balances
 
 部署之前，需要先激活zkSync钱包，具体流程[link](https://zinc.zksync.io/07-smart-contracts/04-troubleshooting.html)
 部署合约
-`
-cargo build
-`
+`cargo build`
 在./data/input.json中部分代码设为如下：
 ```
 ...
@@ -105,13 +108,10 @@ cargo build
 ```
 设置手续费为30/10000即0.3%
 在private_key文件中，将自己的以太坊账户private_key写入。接着:
-`
-zargo publish --network rinkeby --instance default
-`
+`zargo publish --network rinkeby --instance default`
 返回结果：
-Address 0xc251936d118b3f7b59f1782df5fde3ed0d719ab5
-Account ID 126842
-分别为在zkSync中的合约地址和合约id
+* Address 0xc251936d118b3f7b59f1782df5fde3ed0d719ab5
+* Account ID 126842
 
 接着根据文档依次输入参数，调用函数实现调用和查询功能。
 (该合约只能进行deposit和exchange，deposit进去的只能用另一种币换出来，上当了......)
