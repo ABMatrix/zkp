@@ -116,6 +116,12 @@ balances：address->balances
 接着根据文档依次输入参数，调用函数实现调用和查询功能。
 (该合约只能进行deposit和exchange，deposit进去的只能用另一种币换出来，上当了......)
 
+### 启动 zandbox
+首先编译
+
+然后 `./zandbox -vvv --network=localhost --postgresql=postgres://postgres@localhost/plasma`
+
+
 ## 总结
 该语言语法十分类似Rust，在结构设计上又参考了Solidity，熟悉这两种语言的可以学的很快。整体上来说，基本功能都差不多有，但是还
 需要大量的库做支持才能发展好。std库的功能感觉都不够多。
