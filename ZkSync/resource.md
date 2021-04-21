@@ -20,3 +20,7 @@
 **Zkswap**
 [Swap钱包](https://zks.app/zh/wallet)
 [浏览器](https://zkswap.info/zh)
+
+# Layer2资料
+
+[读懂以太坊扩容主力「Rollup」](https://www.chainnews.com/articles/424799840472.htm?utm_source=block123-wechat)
