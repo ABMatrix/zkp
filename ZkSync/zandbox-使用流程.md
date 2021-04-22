@@ -1,12 +1,13 @@
-#Zinc接口
+# Zinc接口
 
-##合约相关
+
+## 合约相关
 
 一笔Swap的Call交易，MSG中的`msg.token_address`将被转成
 
 `tokenname`与`arguments`中第一个元素组成`pair`
  
- <br />
+<br />
  
 比如:
 `let pair_name = format!("{}/{}",msg.token_address.to_tokenname(),arguments[0]);`
@@ -28,7 +29,7 @@
 ##  外部接口相关
  <br />
  
-###1 .查询pair组合
+### 1 .查询pair组合
 1.1. `http://8.210.23.214:4001/api/v1/swap/query`方法外加对应参数
 
  <br />
@@ -43,8 +44,15 @@ address 例如`"0x12345645464"`建立映射
 
 来添加 地址和币名的 映射
 
+
  <br />
  
+ eg `http://8.210.23.214:4001/api/v1/swap/add_token_name?tokenname=PPP&address=0xafsfasf1199999afdfsdfafd`
+ 
+ return: `200ok`
+ 
+  <br />
+  
 ### 3.查询24h信息
 输入 pair name 比如"ETH/BTC"
 
