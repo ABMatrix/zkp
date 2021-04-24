@@ -12,7 +12,7 @@ zinc代码中的.run.sh没法编译通过，问题未解决，
 DATABASE_URL=postgres://postgres@localhost/plasma
 
 创建表：
-sqlx migrage run
+sqlx migrate run
 
 启动：
 ./target/release/zandbox -vvv --network localhost --postgresql postgres://postgres@localhost/plasma
