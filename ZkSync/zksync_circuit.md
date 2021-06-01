@@ -1,4 +1,4 @@
-#Zksync Circuit Overview
+<font size=20>**Zksync Circuit Overview**</font>
 
 主要是从几个方面对zksync实现的电路进行梳理（暂不包含Zksync中与聚合证明 *AggregatedProof* 相关的电路），以确保在更改协议之后可以有效地对电路实现的约束进行修改。
 
@@ -88,7 +88,7 @@ let mut rolling_root = {
 // Main cycle that processes operations:
 for (i, operation) in self.operations.iter().enumerate() {
     ...
-    self.select_op(
+    self.execute_op(
         cs.namespace(|| "execute op"),
         ...
     );
@@ -195,7 +195,7 @@ serialized_tx_bits.extend(op_data.valid_until.get_bits_be());
 2. 验证交易的操作码*tx_code*确实是transfer
 3. timestamp是否正确
 4. 对于还原后交易信息的pubdata验证是否完全还原或者已经更新到一个新的chunk
-分别为lhs和rhs两个账户的一些逻辑进行验证:
+分别为lhs和rhs两个账户的一些逻辑进行验证:</br>
 *lhs*:
     1. 是否为first_chunk（根据定义，交易是first_chunk时，cur为lhs）
         ```
@@ -223,9 +223,9 @@ serialized_tx_bits.extend(op_data.valid_until.get_bits_be());
     5. 确认签名的正确性以及当前账户的nonce并未溢出
     6. 确认序列化后的交易格式的正确性
 
-&emsp;&emsp;*rhs*:
-    &emsp;&emsp;&emsp;1. 确认当前chunk_number是第二个chunk
-    &emsp;&emsp;&emsp;2. 确认账户不为空
+*rhs*:</br>
+    i. 确认当前chunk_number是第二个chunk</br>
+    ii. 确认账户不为空
 
 <font color="#dd0000">总结：</font>不管对于lhs账户还是rhs账户，1-4条都必须保持正确。对lhs账户而言，其1-6条必须保持正确才可以更新其对应账户余额和账户nonce；对rhs账户而言，其1-2条必须保持正确才可以更新其对应账户余额。
 ```
@@ -276,7 +276,9 @@ let is_sig_correct = multi_or(
 ```
 6. 确认序列化是否正确
 分别为lhs和ohs两个部分进行逻辑验证:
+
 *lhs*:
+
     1. 是否为first_chunk（根据定义，交易是first_chunk时，cur为lhs）
     2. 验证当前lhs与cur账户余额相同
     3. 交易的费用与计算费用是否相同
