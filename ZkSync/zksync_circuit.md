@@ -172,6 +172,7 @@ let is_a_correct = CircuitElement::equals(
 ```
 
 <font color="#dd0000">总结：</font>1-6条为所有约束，如果全为真则代表交易有效
+
 7. 如果在交易有效的前提下且chunk为first_chunk则计算当前账户更新后的balance，并更新账户地址
 ```
 let is_first_chunk = Boolean::from(Expression::equals(
@@ -259,6 +260,7 @@ ohs_valid_flags.push(is_second_chunk.not());
 ...
 ```
 <font color="#dd0000">总结：</font>逻辑与Transfer类似，ohs的含义代表了数据正确但chunk尚未传输完毕。
+
 <font size=2>**NFT相关：**</font>与Transfer类似，只有在涉及lhs与rhs才存在与balance相关的逻辑修改，因此仍需要处理这部分逻辑。
 
 ##### Withdraw
