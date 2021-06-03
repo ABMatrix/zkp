@@ -26,7 +26,7 @@ fn synthesize<CS: ConstraintSystem<E>>(self, cs: &mut CS) -> Result<(), Synthesi
 > 约束 a+b=c
 >```
 >cs.enforce(
->    || "a*b=c",
+>    || "a+b=c",
 >    |lc| lc + a + b,
 >    |lc| lc + CS::one(),
 >    |lc| lc + c
